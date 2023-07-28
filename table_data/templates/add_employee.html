@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+{% block title %}
+ employee list
+{% endblock %}
+
+{% block content %}
+<h1>{% if emp.first_name %}Edit{% else %}Add{% endif %} Employee</h1>
+ <form method="post" >
+  {% csrf_token %}
+<!--  first_name: <input type="text" name="first_name" id="first_name" value="{{ emp.first_name}}" > <br>-->
+<!--  last_name:  <input type="text" name="last_name" id="last_name" value="{{ emp.last_name}}" > <br>-->
+<!--  age:        <input type="number" name="age" id="age" value="{{ emp.age}}" > <br>-->
+<!--  salary:     <input type="number" name="salary" id="salary" value="{{ emp.salary}}" > <br>-->
+<!--  email:      <input type="email" name="email" id="email" value="{{ emp.email}}" > <br>-->
+<!--&lt;!&ndash;  dep_id:     <input type="number" name="dep_id" id="dep_id" value="{{ emp.dep_id}}" > <br>&ndash;&gt;-->
+<!--  dep_id: <select name="dep_id">-->
+<!--  {% for dep in Department_list %}-->
+<!--  <option value="{{ dep.id }}" {% if dep.id == emp.dep_id %}selected{% endif %}>{{ dep.dep_name }}</option>-->
+<!--  {% endfor %}-->
+<!-- </select> <br>-->
+<!--  Is Active : <input type="checkbox" name="is_active" id="is_active" value="True"  {% if emp.is_active %} checked {% endif %} > <br>-->
+    {{ form  }}
+  <input type="submit" value="Submit" />
+  {{ error_msg }}
+ </form>
+{{ msg }}
+{% endblock %}

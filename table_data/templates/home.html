@@ -1,0 +1,50 @@
+{% extends 'master.html' %}
+{% block title %}
+home_page
+{% endblock %}
+
+{% block content %}
+<h1> Welcome {{ uname }} </h1><br>
+Last 5 Employee :-
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Email</th>
+        <th>dep</th>
+        <th>Gender</th>
+        <th> Is Active</th>
+    </tr>
+    {% for x in emp %}
+    <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.first_name}} {{x.last_name}}</td>
+        <td>{{x.age}}</td>
+        <td>{{x.salary}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.dep}}</td>
+        <td>{{x.get_gender_display}}</td>
+        <td>{{x.is_active}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<br>
+Last 5 Department :-
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Department Name</th>
+    </tr>
+    {% for x in dep %}
+    <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.dep_name}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

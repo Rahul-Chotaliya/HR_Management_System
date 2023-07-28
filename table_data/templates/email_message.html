@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+
+{% block title %}
+email_message
+{% endblock %}
+
+{% block content %}
+<h1> Send Email</h1>
+<form method="post">
+    {% csrf_token %}
+    Subject : <input type="text" name="subject" id="subject" placeholder="subject"> <br>
+    body : <input type="text" name="body" id="body" placeholder="enter message"><br>
+    CC : <input type="text" name="cc" id="cc" placeholder="email id see everyone"><br>
+    TO : <input type="text" name="to" id="to" placeholder="send person email id "><br>
+    BCC : <input type="text" name="bcc" id="bcc" placeholder="email id dont see everyone"><br>
+    Reply_To: <input type="text" name="reply" id="reply" placeholder="enter reply email id"><br>
+    <input type="submit" value="Submit">
+    {{ error }}
+
+</form>
+
+{% endblock %}

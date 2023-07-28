@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+{% block title %}
+Department page
+{% endblock %}
+{% block content %}
+
+<h1><a href="add/">Add Department</a></h1>
+<table style="text-align:center; font-weight:bold;font-size:20px">
+    <tr style="background-color:lightblue">
+
+        <th>ID</th>
+        <th>Department Name</th>
+        <th>Edit Dep.</th>
+    </tr>
+    {% for x in Department_list %}
+    <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.dep_name}}</td>
+        <td><a href="/department/{{x.id}}/edit/">Edit {{x.dep_name}}</a></td>
+        <td><a href="/department/{{x.id}}/delete/">Delete</a></td>
+    </tr>
+    {% endfor%}
+</table>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+ employee list
+{% endblock %}
+
+{% block content %}
+<h1><a href="add/">Add Employee</a></h1>
+<table style="width:1200px;height:250px;text-align:center;font-weight:bold">
+    <tr style="background-color:lightblue">
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Email</th>
+        <th>dep</th>
+        <th>Gender</th>
+        <th>Edit Details</th>
+        <th>Delete Employee</th>
+        <th> Is Active</th>
+    </tr>
+        {% for x in Employee_list %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td>{{x.first_name}}  {{ x.last_name}}</td>
+                <td>
+                {% if x.age <= 18 %}
+                    {{x.age }}<a href="?Age_filter=minor" style="color:yellow; text-decoration:none" > Minor</a>
+                {% elif 18 < x.age and x.age <= 50 %}
+                    {{x.age }}<a href="?Age_filter=young" style="color:red;text-decoration:none"> Young</a>
+                {% else %}
+                    {{x.age}}<a href="?Age_filter=senior" style="color:green;text-decoration:none"> Senior</a>
+                {% endif %}
+                </td>
+                <td>
+                {% if x.salary <= 20000 %}
+                    <a href="?sl_filter=lt20" style="color:purple;text-decoration:none"> {{x.salary}}</a>
+                {% elif x.salary > 20000 and x.salary <= 50000 %}
+                    <a href="?sl_filter=lt50" style="color:red;text-decoration:none"> {{x.salary}}</a>
+                {% else %}
+                    <a href="?sl_filter=gt50" style="color:green;text-decoration:none"> {{x.salary}}</a>
+                {% endif %}
+                </td>
+                <td>{{x.email}}</td>
+                <td><span style="color:blue">{{x.dep.dep_name}}</span></td>
+                <td>{{x.get_gender_display}}</td>
+                <td><a href="/employee/{{x.id}}/edit/" style="text-decoration:none">Edit {{x.first_name}}</a></td>
+                <td><a href="/employee/{{x.id}}/delete/" style="text-decoration:none">Delete {{x.first_name}}</a></td>
+                <td>
+                {% if x.is_active == False %}
+<!--                    <img src="\static\cross.png" width="20px">-->
+                     <img src="{% static 'cross.png' %}" width="20px">
+                {% else %}
+
+                    <img src="{% static 'check.png' %}" width='20px'>
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+</table>
+{% endblock %}

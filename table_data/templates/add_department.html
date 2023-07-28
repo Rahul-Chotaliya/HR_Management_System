@@ -1,0 +1,16 @@
+{% extends 'master.html' %}
+{% block title %}
+add_department
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if dep %}Edit{% else %}Add{% endif %} Department</h1>
+<form method="post">
+    {% csrf_token %}
+<!--    <input type="text" name="dep_name" id="dep_name" value="{{dep.dep_name}}" />-->
+    {{ form }}
+    <input type="submit" value="{% if dep %}Update{% else %}Add{% endif %}" />
+    {{ msg }}
+</form>
+{% endblock %}

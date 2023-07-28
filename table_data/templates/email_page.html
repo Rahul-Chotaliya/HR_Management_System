@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+
+{% block title %}
+email_page
+{% endblock %}
+
+{% block content %}
+<h1> Send Email</h1>
+<form method="post">
+    {% csrf_token %}
+    Subject : <input type="text" name="subject" id="subject"> <br>
+    Message : <input type="text" name="message" id="message"><br>
+    Html Message : <input type="text" name="html" id="html"><br>
+    Recipient_List : <input type="text" name="recipient" id="recipient"><br>
+    Reply_To: <input type="text" name="reply" id="reply"><br>
+    <input type="submit" value="Submit">
+
+</form>
+
+
+{% endblock %}

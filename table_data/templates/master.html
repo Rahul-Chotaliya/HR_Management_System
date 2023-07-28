@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'master.css' %}">
+</head>
+<body>
+<div class="topnav">
+  <a class="active" href="/admin/">Admin</a>
+  <a href="/home/">home</a>
+  <a href="/employee/">Employee table</a>
+  <a href="/department/">Department Table</a>
+  <a href="/email/">Send mail</a>
+  <a href="/email_message/">Email Message</a>
+    <a class="logout" href="/password/">Change Password</a>
+    <a  href="/logout/">Log Out</a>
+</div>
+<div class="bod">
+{% block content %}
+
+{% endblock %}
+    </div>
+</body>
+</html>
